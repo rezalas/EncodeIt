@@ -61,6 +61,9 @@ class EncodeIt:
             if(tmp[0] == '%'):
                 converted += tmp
             else:
+                # This forces all characters to be encoded, not just url reserved characters.
+                # This is useful in some cases where you may want to encode all characters to avoid
+                # a filter or firewall rule that may be looking for specific characters or words.
                 converted += f"%{hex(ord(tmp))[2:]}"
         
         return converted
